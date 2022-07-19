@@ -1,20 +1,25 @@
 version: '3.1'
 services:
   mysql:
-    image: docker.io/bitnami/mysql:8.0
+    image: mysql
     ports:
       - '3306:3306'
     volumes:
       - 'mysql_data:/bitnami/mysql/data'
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
     environment:
-      # ALLOW_EMPTY_PASSWORD is recommended only for development.
-      - ALLOW_EMPTY_PASSWORD=yes
+      MYSQL_ROOT_PASSWORD: abc123
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: abc123
+      MYSQL_DATABASE: shiny
     healthcheck:
       test: ['CMD', '/opt/bitnami/scripts/mysql/healthcheck.sh']
       interval: 15s
       timeout: 5s
       retries: 6
-
+    expose:
+          - 3306
 volumes:
   mysql_data:
     driver: local

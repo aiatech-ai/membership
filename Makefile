@@ -1,9 +1,11 @@
-DB_URL=mysql://root:@tcp(localhost:3306)/shiny?multiStatements=true
+DB_URL=mysql://admin:abc123@tcp(localhost:3306)/shiny?multiStatements=true
 
 init:
-	docker-compose up mysql
-migrateup:
+	docker-compose up mysql -d
+uninit: 
+	docker-compose down -v
+up:
 	migrate -path db/migration -database "$(DB_URL)" -verbose up
-migratedown:
+down:
 	migrate -path db/migration -database "$(DB_URL)" -verbose down
-.PHONY: migrateup migratedown init
+.PHONY: migrateup migratedown init uninit

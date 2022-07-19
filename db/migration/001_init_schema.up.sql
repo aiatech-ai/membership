@@ -1,3 +1,4 @@
+CREATE DATABASE IF NOT EXISTS shiny;
 CREATE TABLE `user` (
                         `id` int PRIMARY KEY AUTO_INCREMENT,
                         `full_name` varchar(255),

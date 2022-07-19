@@ -12,16 +12,26 @@ Install
 Make sure install Docker & make in your develop enviroment before do clone the repo:
 1. Install Docker Desktop: [Download](https://www.docker.com/products/docker-desktop/)
 2. Install make tool: `sudo apt install make`
-3. Clone the repo:    
+3. Install go-migrate: [Detail](https://github.com/golang-migrate/migrate/blob/master/cmd/migrate/README.md)   
+- MAC: `brew install golang-migrate`
+- UBUNTU: 
+```
+curl -s https://packagecloud.io/install/repositories/golang-migrate/migrate/script.deb.sh | sudo bash
+
+sudo apt-get update
+
+sudo apt-get install migrate
+ ```
+4. Clone the repo:    
 `git clone git@github.com:shinystarvn/shinymembership.git`
-4. Go to the folder:   
+5. Go to the folder:   
 `cd shinymembership`
-5. Checkout to new branch:   
+6. Checkout to new branch:   
 `git checkout -b mytest`
-6. Start docker images:   
+7. Start docker images:   
 `make init`
-7. Migrate database:   
-`make migrateup`
-8. Init all library:   
+8. Migrate database:   
+`make up`
+9. Init all library:   
 `go mod tidy`
 
